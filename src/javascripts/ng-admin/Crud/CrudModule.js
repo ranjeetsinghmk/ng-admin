@@ -5,6 +5,7 @@ require('textangular/dist/textAngularSetup');
 require('textangular/dist/textAngular');
 
 require('angular-ui-codemirror');
+require('angular-ui-sortable');
 
 var CrudModule = angular.module('crud', [
     'ui.router',
@@ -15,6 +16,7 @@ var CrudModule = angular.module('crud', [
     'ngInflection',
     'ngFileUpload',
     'ngNumeraljs',
+    'ui.sortable'
 ]);
 
 CrudModule.controller('ListLayoutController', require('./list/ListLayoutController'));

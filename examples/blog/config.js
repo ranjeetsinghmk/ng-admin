@@ -347,7 +347,8 @@
             .fields([
                 nga.field('id').label('ID'),
                 nga.field('name'),
-                nga.field('published', 'boolean').cssClasses(function(entry) { // add custom CSS classes to inputs and columns
+                nga.field('published', 'boolean')
+                    .cssClasses(function(entry) { // add custom CSS classes to inputs and columns
                     if (entry && entry.values){
                         if (entry.values.published) {
                             return 'bg-success text-center';

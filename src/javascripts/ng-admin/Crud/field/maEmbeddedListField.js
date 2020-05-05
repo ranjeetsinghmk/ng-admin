@@ -9,7 +9,7 @@ export default function maEmbeddedListField() {
         },
         restrict: 'E',
         link: {
-            pre: function(scope) {
+            pre: function (scope) {
                 const field = scope.field();
                 const targetEntity = field.targetEntity();
                 const targetEntityName = targetEntity.name();
@@ -54,22 +54,26 @@ export default function maEmbeddedListField() {
             }
         },
         template: `
-<div class="row"><div class="col-sm-12">
-    <ng-form ng-repeat="entry in entries track by $index" class="subentry" name="subform_{{$index}}" ng-init="formName = 'subform_' + $index">
-        <div class="remove_button_container">
-            <a class="btn btn-default btn-sm" ng-click="remove(entry)"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>&nbsp;<span translate="REMOVE"></span></a>
-        </div>
-        <div class="form-field form-group" ng-repeat="field in ::fields track by $index">
-            <ma-field field="::field" value="entry.values[field.name()]" entry="entry" entity="::targetEntity" form="formName" datastore="::datastore()"></ma-field>
-        </div>
-        <hr/>
-    </ng-form>
-    <div class="form-group">
-        <div class="col-sm-offset-2 col-sm-10">
-            <a class="btn btn-default btn-sm" ng-click="addNew()"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;<span translate="ADD_NEW" translate-values="{ name: field().label().toLowerCase() }"></span></a>
-        </div>
-    </div>
-</div></div>`
+            <div class="row">
+                <div class="col-sm-12" ui-sortable ng-model="entries">
+                    <ng-form ng-repeat="entry in entries track by $index" class="subentry" style="cursor: move;" name="subform_{{$index}}" ng-init="formName = 'subform_' + $index">
+                        <div class="remove_button_container">
+                            <a class="btn btn-default btn-sm" ng-click="remove(entry)"><span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>&nbsp;<span translate="REMOVE"></span></a>
+                        </div>
+                        <div class="form-field form-group" ng-repeat="field in ::fields track by $index">
+                            <ma-field field="::field" value="entry.values[field.name()]" entry="entry" entity="::targetEntity" form="formName" datastore="::datastore()"></ma-field>
+                        </div>
+                        <hr/>
+                    </ng-form>
+                    
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <a class="btn btn-default btn-sm" ng-click="addNew()"><span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>&nbsp;<span translate="ADD_NEW" translate-values="{ name: field().label().toLowerCase() }"></span></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+`
     };
 }
 

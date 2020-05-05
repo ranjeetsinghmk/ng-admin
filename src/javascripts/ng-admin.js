@@ -17,11 +17,11 @@ const ngadmin = angular.module(moduleName, [
     'AdminDescriptionModule'
 ]);
 
-ngadmin.config(['NgAdminConfigurationProvider', 'AdminDescription', function(NgAdminConfigurationProvider, AdminDescription) {
+ngadmin.config(['NgAdminConfigurationProvider', 'AdminDescription', function (NgAdminConfigurationProvider, AdminDescription) {
     NgAdminConfigurationProvider.setAdminDescription(AdminDescription);
 }]);
 
-ngadmin.config(['uiSelectConfig', function(uiSelectConfig) {
+ngadmin.config(['uiSelectConfig', function (uiSelectConfig) {
     uiSelectConfig.theme = 'bootstrap';
 }]);
 
